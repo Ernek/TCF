@@ -8,7 +8,7 @@ lines = fin.readlines()
 print(len(lines))
 
 
-tcf_duration = 5000
+tcf_duration = 30000
 Ncol = 11
 col_value = []
 
@@ -17,6 +17,8 @@ for i, line in enumerate(lines):
     #print(line_split[1])
     col_value.append(line_split[Ncol-1])
 print(len(col_value))
+
+fin.close()
 
 col_array = np.array(col_value)
 
@@ -62,9 +64,16 @@ def tcf_cal(data, time):
     
 #print(tcf_cal(col_array, tcf_duration))
 a = tcf_cal(col_array, tcf_duration)[0]
+#print(a)
 
-plt.plot(a)
-plt.show()
+fout = open("output_tcf", "w")
+nl = '\n'
+for i in range(len(a)):
+    fout.write(f'{i}      {str(a[i])} {nl}')
+
+fout.close()
+#plt.plot(a)
+#plt.show()
         
         
         
