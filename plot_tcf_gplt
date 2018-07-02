@@ -1,0 +1,11 @@
+list = system('ls output_*')
+set terminal png size 1024,786 font ',15'
+set output 'tcf_data_out.png'
+set multiplot layout 2,1
+set title 'Autocorrelation Function'
+set ylabel 'C(t)'
+set xlabel 'Time' 
+plot for [file in list] file u 1:2 w l t file
+set title 'Zoom 0 - 5000' 
+set xrange [0:5000]
+plot for [file in list] file u 1:2 w l t file
