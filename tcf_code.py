@@ -8,8 +8,8 @@ lines = fin.readlines()
 print(len(lines))
 
 
-tcf_duration = 30000
-Ncol = 11
+Ncol = int(sys.argv[1])
+tcf_duration = int(sys.argv[2])
 col_value = []
 
 for i, line in enumerate(lines):
@@ -66,7 +66,7 @@ def tcf_cal(data, time):
 a = tcf_cal(col_array, tcf_duration)[0]
 #print(a)
 
-fout = open("output_tcf", "w")
+fout = open(f"output_tcf_col{Ncol}_t{tcf_duration}", "w")
 nl = '\n'
 for i in range(len(a)):
     fout.write(f'{i}      {str(a[i])} {nl}')
